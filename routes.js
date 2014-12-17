@@ -51,6 +51,7 @@ module.exports = function(app,io){
 					number: 1,
 					user: room[0].username,
 					sex: room[0].sex,
+					lang: room[0].lang,
 					id: data
 				});
 			}
@@ -74,10 +75,11 @@ module.exports = function(app,io){
 				socket.username = data.user;
 				socket.room = data.id;
 				socket.sex = data.sex;
+				socket.lang = data.lang;
 
-				// Tell the person what he should use for an avatar
+				// Tell the person what he should use for an avatar and language
 				socket.emit('sex', socket.sex);
-
+                socket.emit('lang',socket.lang);
 
 				// Add the client to the room
 				socket.join(data.id);
@@ -86,6 +88,7 @@ module.exports = function(app,io){
 
 					var usernames = [],
 						sexes = [];
+						langs = [];
 
 					usernames.push(room[0].username);
 					usernames.push(socket.username);
@@ -93,6 +96,8 @@ module.exports = function(app,io){
 					sexes.push(room[0].sex);
 					sexes.push(socket.sex);
 
+                    langs.push(room[0].lang);
+                    langs.push(socket.lang);
 					// Send the startChat event to all the people in the
 					// room, along with a list of people that are in it.
 
@@ -100,7 +105,8 @@ module.exports = function(app,io){
 						boolean: true,
 						id: data.id,
 						users: usernames,
-						sexes: sexes
+						sexes: sexes,
+						langs: langs
 					});
 				}
 			}
@@ -119,7 +125,8 @@ module.exports = function(app,io){
 				boolean: true,
 				room: this.room,
 				user: this.username,
-				sex: this.sex
+				sex: this.sex,
+				lang: this.lang
 			});
 
 			// leave the room

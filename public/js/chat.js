@@ -1,18 +1,20 @@
 // This file is executed in the browser, when people visit /chat/<random id>
 
 $(function(){
+    var a = "";
     var key = "trnsl.1.1.20141205T204405Z.916da3f1c8b0abfa.932b315624f4b848e47a27661933040d190e2421";
-    
-    var translate = function(text) {
-        var url = "https://translate.yandex.net/api/v1.5/tr/translate?key=" + key + "&lang=en-ru&text=" + text;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.onload = function() {
-            var data = xhr.responseXML;
-        var translation = data.getElementsByTagName("Translation");
-        return translation.getElementsByTagName("text").value();
-        };
-        xhr.send();
+    var translate = function(text,from,to){
+        var url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key="+key+"&lang="+from+"-"+to+"&text="+text;
+        $.getJSON(url,function (data, textStatus, xhr) {
+                // success callback
+                if(textStatus == "success"){
+                    a = data.text;
+                    console.log(text + " ="+from+","+to+"=>  " + a);
+                }
+            }
+        );
+        console.log("Here: " + a);
+        return a;
     };
 	// getting the id of the room from the url
 	var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
@@ -22,9 +24,9 @@ $(function(){
 
 	// variables which hold the data for each person
 	var name = "",
-		email = "",
 		friend = "",
 		sex = "",
+		img = "",
 		lang = "";
 
 	// cache some jQuery objects
@@ -43,11 +45,9 @@ $(function(){
 		leftNickname = $(".nickname-left"),
 		loginForm = $(".loginForm"),
 		yourName = $("#yourName"),
-		yourEmail = $("#yourEmail"),
-		yoursex = $("#yoursex"),
-		hissex = $("#hissex"),
+		yourLang = $("#yourLang"),
 		hisName = $("#hisName"),
-		hisEmail = $("#hisEmail"),
+		hisLang = $("#hisLang"),
 		chatForm = $("#chatform"),
 		textarea = $("#message"),
 		messageTimeSent = $(".timesent"),
@@ -65,7 +65,9 @@ $(function(){
 
 		socket.emit('load', id);
 	});
-
+    socket.on("lang",function(data){
+        lang = data;
+    });
 	// save the sex
     socket.on('sex', function(data){
 		if(data=='Male'){
@@ -88,23 +90,20 @@ $(function(){
 				e.preventDefault();
 
 				name = $.trim(yourName.val());
-				sex = $.trim(yoursex.val());
+				sex = $("#yoursex:checked").val();
 				if(name.length < 1){
 					alert("Please enter a nick name longer than 1 character!");
 					return;
 				}
 
-				email = yourEmail.val();
-
-                    
+				lang = yourLang.val();
 					showMessage("inviteSomebody");
-                    ownerImage.attr(src, img);
-					// call the server-side function 'login' and send user's parameters
-					socket.emit('login', {user: name, sex: sex, id: id});
+                    //call the server-side function 'login' and send user's parameters
+					socket.emit('login', {user: name, sex: sex, lang: lang, id: id});
 			
 			});
 		}
-
+   //     ownerImage.setAttribute("src", img);
 		else if(data.number === 1) {
 
 			showMessage("personinchat",data);
@@ -114,7 +113,7 @@ $(function(){
 				e.preventDefault();
 
 				name = $.trim(hisName.val());
-                sex = $.trim(hissex.val());
+                sex =  $("#hissex:checked").val();
 				if(name.length < 1){
 					alert("Please enter a nick name longer than 1 character!");
 					return;
@@ -124,10 +123,8 @@ $(function(){
 					alert("There already is a \"" + name + "\" in this room!");
 					return;
 				}
-				email = hisEmail.val();
-
-                //    creatorImage.attr(src, img);
-				socket.emit('login', {user: name, sex: sex, id: id});
+				lang = hisLang.val();
+                socket.emit('login', {user: name, sex: sex, lang: lang, id: id});
 			});
 		}
 
@@ -136,7 +133,6 @@ $(function(){
 		}
 
 	});
-
 	// Other useful 
 
 	socket.on('startChat', function(data){
@@ -181,7 +177,7 @@ $(function(){
 		showMessage('chatStarted');
 
 		if(data.msg.trim().length) {
-			createChatMessage(data.msg, data.user, data.img, moment());
+            createChatMessage(translate(data.msg,"en",lang), data.user, data.img, moment());
 			scrollToBottom();
 		}
 	});
@@ -210,7 +206,7 @@ $(function(){
 			scrollToBottom();
 
 			// Send the message to the other person in the chat
-			socket.emit('msg', {msg: textarea.val(), user: name, img: img});
+			socket.emit('msg', {msg: translate(textarea.val(),lang,"en"), user: name, img: img});
 
 		}
 		// Empty the textarea
@@ -295,13 +291,13 @@ $(function(){
 
 			left.fadeOut(1200, function() {
 				inviteSomebody.fadeOut(1200,function(){
-					noMessages.fadeIn(1200);
-					footer.fadeIn(1200);
+					noMessages.fadeIn(800);
+					footer.fadeIn(800);
 				});
 			});
 
 			friend = data.users[1];
-			noMessagesImage.attr("src","../img/unnamed.jpg");
+			noMessagesImage.attr("src",img);
 		}
 
 		else if(status === "heStartedChatWithNoMessages") {
@@ -312,18 +308,19 @@ $(function(){
 			});
 
 			friend = data.users[0];
-			noMessagesImage.attr("src","../img/unnamed.jpg");
+			noMessagesImage.attr("src",img);
 		}
 
 		else if(status === "chatStarted"){
 
 			section.children().css('display','none');
 			chatScreen.css('display','block');
+		//	footer.css('display', 'visible');
 		}
 
 		else if(status === "somebodyLeft"){
 
-			leftImage.attr("src",data.img);
+			leftImage.attr("src",img);
 			leftNickname.text(data.user);
 
 			section.children().css('display','none');

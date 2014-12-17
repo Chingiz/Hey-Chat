@@ -190,7 +190,7 @@ body {
 	overflow: hidden;
 }
 
-#yourEmail {
+#yourLang {
 	float:left;
 	padding-left: 10px;
 	width: 200px;
@@ -267,7 +267,7 @@ body {
 	margin-bottom:20px;
 }
 
-#hisEmail {
+#hisLang {
 	float:left;
 	padding-left: 10px;
 	width: 200px;
@@ -574,7 +574,7 @@ footer {
 	height: 80px;
 	display: block;
 	float:left;
-	margin: 0 auto;
+	margin: 0 auto; 
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	border-radius: 2px;
