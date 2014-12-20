@@ -1,4 +1,7 @@
-Hey-Chat
+Hey!Chat
 ========
 
-Chat App for Global Hackathon
+
+https://codeship.com/projects/YOUR_PROJECT_UUID/status?branch=master
+
+
