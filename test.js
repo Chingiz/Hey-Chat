@@ -1,10 +1,8 @@
-var translate = require('yandex-translate');
-var key = "trnsl.1.1.20141205T204405Z.916da3f1c8b0abfa.932b315624f4b848e47a27661933040d190e2421";
-translate('Kate ate an apple', { to: 'tr', key:key }, function(err, res) {
-  console.log(res.text);
-});
-
-translate.detect('Граждане Российской Федерации имеют право собираться мирно без оружия, проводить собрания, митинги и демонстрации, шествия и пикетирование',{key:key}, function(err, res) {
-   // res.lang -> 'ru'
-   console.log(res.lang);
+var bt = require('bing-translate/lib/bing-translate.js').init({
+    client_id: '3a7a26d9254FFC08', 
+    client_secret: 'SuNwPHKH6UbvhyZ34FlqOWJ9z2zN6KS8djzHpf8NvOI='
+  });
+ 
+bt.translate('This hotel is located close to the centre of Paris.', 'en', 'ru', function(err, res){
+  console.log(err, res);
 });
