@@ -1,7 +1,7 @@
-var bt = require('bing-translate/lib/bing-translate.js').init({
+/*var bt = require('bing-translate/lib/bing-translate.js').init({
     client_id: '3a7a26d9254FFC08', 
     client_secret: 'SuNwPHKH6UbvhyZ34FlqOWJ9z2zN6KS8djzHpf8NvOI='
-  });
+  });*/
 // This file is executed in the browser, when people visit /chat/<random id>
 $(function () {
 	var key = "trnsl.1.1.20141205T204405Z.916da3f1c8b0abfa.932b315624f4b848e47a27661933040d190e2421";
