@@ -5,4 +5,5 @@ var bt = require('bing-translate/lib/bing-translate.js').init({
  
 bt.translate('This hotel is located close to the centre of Paris.', 'en', 'ru', function(err, res){
   console.log(err, res);
+  console.log(res.translated_text);
 });
