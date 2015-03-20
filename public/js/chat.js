@@ -358,5 +358,3 @@ $(function () {
 	}
 
 });
-
-var app = angular.module('HeyChat', ['ngMaterial']);
