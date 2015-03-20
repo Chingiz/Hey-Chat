@@ -19,6 +19,17 @@ $(function () {
         xhr.send();
         return a;
 	};
+	var makeTranslateRequest = function(token, text, from, to) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "http://api.microsofttranslator.com/v2/Http.svc/Translate?from="+from+"&to="+to+"&text="+text, true);
+        xmlhttp.setRequestHeader('Authorization', 'Bearer ' + token);
+        xmlhttp.onreadystatechange = function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                console.log(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.send();
+    }
 	// getting the id of the room from the url
 	var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
 
@@ -347,3 +358,5 @@ $(function () {
 	}
 
 });
+
+var app = angular.module('HeyChat', ['ngMaterial']);

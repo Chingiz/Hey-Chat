@@ -5,52 +5,39 @@
 	It doesn't do much, except showing the create button for the chat.
  -->
 
-<html>
+<html lang="en" ng-app="HeyChat">
 
 <head>
 
-	<title>Create a new chat room! | Tutorialzine Demo</title>
+	<title>Create a new chat room!</title>
 
 	<link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
-
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 
 </head>
 
-<body>
+<body ng-controller="AppCtrl">
+<md-content >
+	<md-toolbar class="homebanner">
+     <h1 class="homebannertext md-toolbar-tools">
+			Hey!<span>Chat</span>
+	</h1>
+    </md-toolbar>
 
-	<header class="homebanner">
-
-			<h1 class="homebannertext">
-				<a href="http://tutorialzine.com/2014/03/nodejs-private-webchat/" id="logo">Tutorial<span>zine</span></a>
-			</h1>
-
-	</header>
-
-	<section>
-
-		<div class="homesection">
-
-			<div class="node">
-				<img src="img/nodejslogo.png" alt="nodelogo" id="nodelogo"/>
-				<h2 id="chat">powered web chat</h2>
-			</div>
-
-			<a title="Create" href="/create" id="create">
+			<md-button class="md-primary" title="Create" ng-href="/create" id="create">
 				<div id="createbutton">
 					<div id="little">Create a Private</div>
 					<div id="big">CHAT ROOM!</div>
 				</div>
-			</a>
+			</md-button>
+</md-content>
 
-			<div class="tutorial">
-				<a title="Download the source code." href="http://tutorialzine.com/2014/03/nodejs-private-webchat/" id="tutorial">
-					or download a copy of the source code here
-				</a>
-			</div>
-		</div>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
 
-	</section>
-
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
 </body>
 </html>
