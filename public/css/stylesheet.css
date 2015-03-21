@@ -14,7 +14,7 @@
 body {
 	background-color: #f0f1f3;
 	color:#667073;
-	font: 16px/1.3 'Arial',sans-serif;
+	font: 16px/1.3 'Roboto',sans-serif;
 }
 
 
@@ -29,12 +29,10 @@ body {
 
 .homebannertext {
 	text-align:center;
-	font-size: 50px;
-	font-family: 'Open Sans Condensed',serif;
-	color:white;
 }
 .homebannertext span {
 	font-weight: bold;
+	color: orange;
 }
 
 
@@ -52,7 +50,7 @@ body {
 .bannertext {
 	text-align:center;
 	padding-top: 15px;
-	font-family: 'Open Sans Condensed',serif;
+	font-family: 'Roboto',serif;
 	font-weight: bold;
 	color:white;
 	font-size:25px;
@@ -70,50 +68,20 @@ body {
 
 /* ------ Home ------ */
 
-
-.homesection {
-	text-align:center;
-	margin-top:140px;
-}
-
-.node {
-	padding-top: 20px;
-	text-align:center;
-	margin-bottom:120px;
-}
-.node #chat {
-	font-family: 'Open Sans Condensed';
-	font-weight: normal;
-	color: #707368;
-}
-
-#nodelogo {
-	width: 410px;
-	height: 110px;
-	margin-bottom: 35px;
-}
-
 #create {
-	width: 300px;
+	width: 40%;
 	height: 100px;
-	background-color: #70b1d1;
 	text-align:center;
 	display: block;
-	margin:0px auto;
-	border-radius: 3px;
-	box-shadow: 0px 5px 5px #e4e8e7;
-	text-decoration: none;
-	margin-bottom: 70px;
-	color: #eeffff;
-}
-#create:visited {
-	color: #eeffff;
+	margin:20%  auto;
 	text-decoration: none;
 }
+
 #createbutton {
 	padding-top: 28px;
 }
 #little {
+	margin-top: 15px;
 	font-weight: normal;
 	font-size: 13px;
 }
@@ -121,15 +89,7 @@ body {
 	font-weight: bold;
 	font-size: 23px;
 }
-.tutorial{
-	margin-bottom:90px;
-}
-#tutorial {
-	color: #88bfd4;
-}
-#tutorial:visited {
-	color: #88bfd4;
-}
+
 
 
 
