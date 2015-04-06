@@ -27,15 +27,14 @@ body {
 /* ------ Home ------ */
 
 
-.homebannertext {
+p.homebannertext{
 	text-align:center;
+	font-size: 48px;
 }
-.homebannertext span {
+p.homebannertext span {
 	font-weight: bold;
 	color: orange;
 }
-
-
 
 
 /* ------ Invite ------ */
@@ -50,7 +49,6 @@ body {
 .bannertext {
 	text-align:center;
 	padding-top: 15px;
-	font-family: 'Roboto',serif;
 	font-weight: bold;
 	color:white;
 	font-size:25px;
@@ -73,8 +71,9 @@ body {
 	height: 100px;
 	text-align:center;
 	display: block;
-	margin:20%  auto;
+	margin:20%  auto 0;
 	text-decoration: none;
+	color: snow;
 }
 
 #createbutton {
@@ -97,13 +96,8 @@ body {
 
 .connected {
 	text-align:center;
-	display: block;
 	margin:0px auto;
-	width: 700px;
-	height: 400px;
-	background-color: #ffffff;
-	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+	width: 75%;
 	color: #637277;
 }
 .connected h2 {
@@ -112,14 +106,7 @@ body {
 .infoConnected {
 	text-align: left;
 	float: right;
-	margin: 65px 165px 0 0;
-}
-#creatorImage {
-	float: left;
-	margin: 90px 0 0 140px;
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+	margin: auto;
 }
 
 #yourName {
@@ -163,6 +150,7 @@ body {
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
+	margin-bottom: 10px;
 }
 
 
@@ -586,7 +574,7 @@ footer {
 
 .chatscreen{
 	display:none;
-	width:700px;
+	width:85%;
 	margin: 0 auto 200px;
 	overflow:hidden;
 }

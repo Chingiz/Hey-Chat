@@ -306,7 +306,7 @@ $(function () {
 			personInside.fadeIn(1200);
 
 			chatNickname.text(data.user);
-			ownerImage.attr("src", img);
+			ownerImage.attr("src", data.img);
 		}
 
 		else if (status === "youStartedChatWithNoMessages") {

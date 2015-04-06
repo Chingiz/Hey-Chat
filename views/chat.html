@@ -20,13 +20,16 @@
 </head>
 
 <body ng-controller="AppCtrl">
-
-
-	<section class="section">
+	<md-toolbar md-scroll-shrink>
+	<span flex></span>
+     <p class="homebannertext md-toolbar-tools md-toolbar-tools-bottom">
+			Hey!<span>Chat</span>
+	</p>
+    </md-toolbar>
+	<div class="section">
 
 		<!-- These elements are displayed as white info cards in the middle of the screen -->
-
-		<div class="connected">
+		<md-whiteframe class="md-whiteframe-z5 connected" layout layout-align="center center">
 			<div class="infoConnected">
 				<h2>Who are you?</h2>
 				<br/>
@@ -38,14 +41,12 @@
 				    <img src="../img/female.png" class="female" style="width:40px; height:40px;"/><br/>
 					<input type="text" id="yourName" placeholder="Your nick name" /><br/>
 					<input type="text" id="yourLang" placeholder="Preferred language" /><br/>
-					<input type="submit" id="yourEnter" value="ENTER" />
+					<input type="submit" id="yourEnter" value="ENTER" /><br />
 				</form>
 
 			</div>
-
-		</div>
-
-		<div class="personinside">
+  		</md-whiteframe>
+		<md-whiteframe class="md-whiteframe-z5 personinside" layout layout-align="center center">
 
 			<img id="ownerImage" />
 
@@ -64,10 +65,9 @@
 				</form>
 
 			</div>
+		</md-whiteframe>
 
-		</div>
-
-		<div class="invite-textfield">
+		<md-whiteframe class="md-whiteframe-z5 invite-textfield" layout layout-align="center center">
 
 			<h2>Oops, there are no other people in this chat!</h2>
 			<h5>Invite a friend by sending them this URL</h5>
@@ -76,9 +76,9 @@
 				<a title="Invite a friend" href="" id="link"></a>
 			</div>
 
-		</div>
+		</md-whiteframe>
 
-		<div class="left">
+		<md-whiteframe class="md-whiteframe-z5 left" layout layout-align="center center">
 
 			<img src="" id="leftImage" />
 
@@ -87,7 +87,7 @@
 				<h5>Invite somebody else by sending them this page.</h5>
 			</div>
 
-		</div>
+		</md-whiteframe>
 
 		<div class="toomanypeople">
 
@@ -106,17 +106,15 @@
 			</div>
 
 		</div>
+		<md-whiteframe class="md-whiteframe-z2 chatscreen" layout layout-align="center center">
 
-		<div class="chatscreen">
 
 			<ul class="chats">
 				<!-- The chat messages will go here -->
 			</ul>
 
-		</div>
-
-	</section>
-
+		</md-whiteframe>
+	</div>
 	<footer>
 
 		<form id="chatform">
@@ -127,7 +125,7 @@
 		</form>
 
 	</footer>
-		<script src="../js/script.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/moment.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
@@ -137,6 +135,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
 
     <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+	<script src="../js/script.js"></script>
 </body>
 
 </html>
